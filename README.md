@@ -5,9 +5,13 @@ testing out some bash concepts:
 * arrays, ...
 
 ## Scripts
-### parallel_execution.sh
+### test_slugify.sh
  
-*  PARALLEL EXECUTION
-*  experiments in running processes/programs in parallel
-*  Experiment 1: generate a list of one-liners, feed them to xargs to execute them together
+*  SLUGIFY
+*  creating slugs from sentences, urls, accents, ...
+ 
+### test_symlink.sh
+ 
+*  SYMLINK RESOLUTION
+*  experiments in resolving symbolic links
  

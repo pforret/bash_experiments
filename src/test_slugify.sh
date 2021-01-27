@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source "$(dirname "$0")"/include.sh
-#-# PARALLEL EXECUTION
-#-# experiments in running processes/programs in parallel
+#-# SLUGIFY
+#-# creating slugs from sentences, urls, accents, ...
 
 slugify2() {
   # shellcheck disable=SC2020

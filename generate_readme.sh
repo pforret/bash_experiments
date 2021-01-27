@@ -3,11 +3,11 @@
 if [[ -f "README.md" ]] ; then
 (
   cat INTRO.md
-  for script in src/*.sh ; do
-      echo "### $(basename $script)"
+  for script in src/test*.sh ; do
+    echo "$script" >&2
+      echo "### $(basename "$script")"
       echo " "
-      grep '#-#' "$script" \
-      | sed 's/#-#/* /'
+      grep '#-#' "$script" | sed 's/#-#/* /'
       echo " "
   done
 ) > README.md
