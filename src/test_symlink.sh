@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-
-source $(dirname "$0")/include.sh
+source "$(dirname "$0")"/include.sh
 #-# SYMLINK RESOLUTION
-#-# resolve symbolic links
+#-# experiments in resolving symbolic links
 
 resolve_symlink(){
   script_install_path="$1"
@@ -33,7 +32,7 @@ recursive_readlink(){
   link_name=$(basename "$symlink")
   [[ -z "$link_folder" ]] && link_folder="$file_folder"
   [[ "$link_folder" = \.* ]] && link_folder="$(cd -P "$file_folder" && cd -P "$link_folder" >/dev/null 2>&1 && pwd)"
-  stderr "Symbolic link: $1 -> $symlink -> $link_folder/$link_name"
+  #stderr "Symbolic link: $1 -> $symlink -> $link_folder/$link_name"
   recursive_readlink "$link_folder/$link_name"
 }
 
@@ -83,12 +82,12 @@ check_results(){
 }
 
 
-recursive_readlink "./README"
-recursive_readlink "phpize"
-recursive_readlink "README"
-recursive_readlink ~/.basher/cellar/bin/idea
-recursive_readlink ~/.basher/cellar/bin/note
-#check_results ~/.basher/cellar/bin/idea "/Users/pforret/.basher/cellar/packages/pforret/note/note.sh"
-#check_results ~/.basher/cellar/bin/bashew.sh "/Users/pforret/.basher/cellar/packages/pforret/bashew/bashew.sh"
-#check_results  "/Users/pforret/.basher/cellar/packages/pforret/bashew/bashew.sh"
-#echo " == $(resolve_symlink ../note/note)"
+test_basher_note(){
+  assert_equals "/Users/pforret/.basher/cellar/packages/pforret/note/note.sh" $(recursive_readlink ~/.basher/cellar/bin/note)
+}
+test_basher_idea(){
+  assert_equals "/Users/pforret/.basher/cellar/packages/pforret/note/note.sh" $(recursive_readlink ~/.basher/cellar/bin/idea)
+}
+test_bin_sha1sum(){
+  assert_equals "/usr/local/Cellar/coreutils/8.32/bin/gsha1sum" $(recursive_readlink /usr/local/bin/sha1sum)
+}
