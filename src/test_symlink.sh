@@ -82,12 +82,12 @@ check_results(){
 }
 
 
-test_basher_note(){
+test_symlink_basher_note(){
   assert_equals "/Users/pforret/.basher/cellar/packages/pforret/note/note.sh" $(recursive_readlink ~/.basher/cellar/bin/note)
 }
-test_basher_idea(){
+test_symlink_basher_idea(){
   assert_equals "/Users/pforret/.basher/cellar/packages/pforret/note/note.sh" $(recursive_readlink ~/.basher/cellar/bin/idea)
 }
-test_bin_sha1sum(){
+test_symlink_bin_sha1sum(){
   assert_equals "/usr/local/Cellar/coreutils/8.32/bin/gsha1sum" $(recursive_readlink /usr/local/bin/sha1sum)
 }
